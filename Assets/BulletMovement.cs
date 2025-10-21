@@ -15,5 +15,10 @@ public class BulletMovement : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
+
+        if (transform.position.y > 13)
+        {
+            Destroy(gameObject);
+        }
     }
 }

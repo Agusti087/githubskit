@@ -8,7 +8,7 @@ public class CreateBullet : MonoBehaviour
     public GameObject Bullet;
     [SerializeField, Range(0.005f, 25)] float speed;
     [SerializeField] float Cooldown;
-    public double Cooldowntime;
+    double Cooldowntime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +25,7 @@ public class CreateBullet : MonoBehaviour
             print("Jag skjuter dig");
             Instantiate(Bullet,rightPoint.position, Quaternion.identity);
             Instantiate(Bullet,leftPoint.position, Quaternion.identity);
-            Cooldowntime += 0.5;
+            Cooldowntime += Cooldown;
 
             
         }
