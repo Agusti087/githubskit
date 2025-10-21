@@ -1,9 +1,15 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CreateBullet : MonoBehaviour
 {
     [SerializeField] KeyCode Shoot = KeyCode.Return;
+    [SerializeField] Transform rightPoint, leftPoint;
     public GameObject Bullet;
+    [SerializeField, Range(0.005f, 25)] float speed;
+    [SerializeField] float Cooldown;
+    public double Cooldowntime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,10 +19,23 @@ public class CreateBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(Shoot))
+        Cooldowntime -= Time.deltaTime;
+
+        if (Input.GetKeyDown(Shoot) && Cooldowntime == 0)
         {
             print("Jag skjuter dig");
-            Instantiate(Bullet);
+            Instantiate(Bullet,rightPoint.position, Quaternion.identity);
+            Instantiate(Bullet,leftPoint.position, Quaternion.identity);
+            Cooldowntime += 0.5;
+
+            
+        }
+        
+        Bullet.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
+
+        if (Cooldowntime <= 0)
+        {
+            Cooldowntime = 0;
         }
     }
     
