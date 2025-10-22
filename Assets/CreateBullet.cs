@@ -19,6 +19,8 @@ public class CreateBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Bullet.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
+
 
         if (Input.GetKeyDown(Shoot) && Cooldowntime <= 0)
         {
@@ -29,12 +31,8 @@ public class CreateBullet : MonoBehaviour
 
             
         }
-        
-        Bullet.transform.position += new Vector3(0, 1, 0) * speed * Time.deltaTime;
-
         if (Cooldowntime > 0)
         {
-
             Cooldowntime -= Time.deltaTime;
         }
     }
