@@ -8,7 +8,7 @@ public class CreateBullet : MonoBehaviour
     public GameObject Bullet;
     [SerializeField, Range(0.005f, 25)] float speed;
     [SerializeField] float Cooldown;
-    double Cooldowntime;
+    float Cooldowntime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
